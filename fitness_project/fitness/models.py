@@ -12,8 +12,10 @@ class WorkoutPlan(models.Model):
 
 
 class Subscription(models.Model):
-    user = models.ForeignKey(WorkoutPlan, on_delete=models.CASCADE)
-    workout_plan = models.ForeignKey(WorkoutPlan, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='subscriptions')
+    workout_plan = models.ForeignKey(
+        WorkoutPlan, on_delete=models.CASCADE, related_name='subscriptions')
     start_date = models.DateField()
     end_date = models.DateField()
 
